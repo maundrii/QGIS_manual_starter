@@ -3,13 +3,13 @@
 
 ## Install PostgreSQL dan PostGIS
 1. Download PostgreSQL dari [situs resminya](https://www.postgresql.org/download/).
-2. Jalankan **Stack Builder** setelah instalasi PostgreSQL selesai.  
-   ![alt text](image-2.png)
-3. Pilih PostgreSQL versi yang diinstal.  
-   ![alt text](image-1.png)
-4. Pilih **Spatial Extensions → PostGIS**.  
-   ![alt text](image-3.png)
-5. Klik **Next** dan ikuti proses instalasi hingga selesai.
+2. Jalankan **Stack Builder** setelah instalasi PostgreSQL selesai.
+![V_DB_01](https://github.com/user-attachments/assets/d67b0105-b93d-42ec-b3ac-b4c7afd0e3a5)
+4. Pilih PostgreSQL versi yang diinstal.  
+![V_DB_02](https://github.com/user-attachments/assets/c0096ab1-1bbd-47e8-a9a3-4c3c0c15cc7d)
+5. Pilih **Spatial Extensions → PostGIS**.  
+![V_DB_03](https://github.com/user-attachments/assets/498b44d8-9b6c-4d90-86cf-4e36011805d8)
+6. Klik **Next** dan ikuti proses instalasi hingga selesai.
 
 ---
 
