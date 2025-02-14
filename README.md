@@ -1,4 +1,5 @@
 # Membuat Vector Database
+## _Oleh Dedi Wahyu Sasongko S.T_
 
 ## Install PostgreSQL dan PostGIS
 1. Download PostgreSQL dari [situs resminya](https://www.postgresql.org/download/).
