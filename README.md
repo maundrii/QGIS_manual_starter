@@ -18,37 +18,36 @@
 ### Pembuatan Database
 1. Buka **pgAdmin** dan login ke PostgreSQL.
 2. Klik kanan pada **Databases → Create → Database**.  
-   ![alt text](image-4.png)
+ ![V_DB_04](https://github.com/user-attachments/assets/74e24a70-72fb-43d7-beb6-8abb75af5e10)
 3. Isi detail database:
    - **Database Name**: nama file database (contoh: `tes_jabar`)
    - **Owner**: `postgres` (atau user lain yang Anda buat)  
-   ![alt text](image-5.png)
+![V_DB_05](https://github.com/user-attachments/assets/7f1586ee-9ec5-46d3-8e43-e08897a5615f)
 4. Klik **Save** untuk menyimpan database.
 5. Aktifkan **PostGIS** di database:
    - Klik kanan pada Database → **Query Tool** di pgAdmin.  
-     ![alt text](image-6.png)
+     ![V_DB_06](https://github.com/user-attachments/assets/23f782a1-7638-445a-aa12-333d9cdba6dd)
    - Akan ditampilkan jendela Query di pgAdmin.  
-     ![alt text](image-7.png)
+     ![V_DB_07](https://github.com/user-attachments/assets/f88c7f2b-9e3b-493d-a1fa-dc6c3aaed17f)
    - Masukkan SQL berikut:
      ```sql
      CREATE EXTENSION postgis;
      ```
-     ![alt text](image-8.png)
+     ![V_DB_08](https://github.com/user-attachments/assets/c04c9998-c40b-47b9-95af-e5ca47b77711)
    - Klik **Execute/Refresh** untuk menjalankan perintah.
    - Jika berhasil, akan muncul pesan **"successfully"**, menandakan ekstensi **PostGIS** telah aktif.
    - Untuk memastikan PostGIS telah aktif:
      - Buka **Object Explorer** pada pgAdmin.
      - Pilih **Database (tes_jabar) → Extensions**.
      - Pastikan **PostGIS** terlihat dalam daftar ekstensi.  
-       ![alt text](image-9.png)
-
+       ![V_DB_09](https://github.com/user-attachments/assets/b670db61-c695-4939-9f67-cda13759f5bd)
 ---
 
 ### Menghubungkan QGIS ke Enterprise Geodatabase
 1. Buka **QGIS**.
 2. Pilih **Layer → Data Source Manager → PostgreSQL**.  
-   ![alt text](image-10.png)  
-   ![alt text](image-11.png)
+   ![V_DB_10](https://github.com/user-attachments/assets/47751f71-759f-4e05-b8aa-dc6584a3a162)
+   ![V_DB_11](https://github.com/user-attachments/assets/1f05aad7-8697-4dc1-98cf-54ad7d3223c5)
 3. Klik **New** dan isi:
    - **Name**: (misal: `PostGISDB`)
    - **Host**: `localhost` (atau IP server PostgreSQL)
@@ -56,27 +55,27 @@
    - **Database**: nama database yang telah dibuat sebelumnya (contoh: `tes_jabar`)
    - **Username**: `postgres`
    - **Password**: (password user PostgreSQL)  
-     ![alt text](image-12.png)
+   ![V_DB_12](https://github.com/user-attachments/assets/388ede35-c2df-409d-aaf1-55c98b4c6fbd)
 4. Klik **Test Connection** untuk memastikan koneksi berhasil.
 5. Klik **OK**, lalu **Connect** untuk melihat tabel dalam database.
 6. Jika koneksi berhasil, **PostGISDB** akan muncul di jendela browser.  
-   ![alt text](image-13.png)
+   ![V_DB_13](https://github.com/user-attachments/assets/577e6600-6abd-4e6e-8fb0-f7dae01b88ad)
 
 ---
 
 ### Import Data Shapefile ke Dalam Database PostGIS di QGIS
 1. Pilih **Database → DB Manager**.  
-   ![alt text](image-19.png)
+   ![V_DB_14](https://github.com/user-attachments/assets/df2fbbdf-e2ec-4734-b60f-bad213c924be)
 2. Pilih **PostGIS** → Pilih koneksi database yang sudah dibuat.
 3. Klik **Import Layer/File** (ikon berbentuk panah ke database).  
-   ![alt text](image-20.png)
+   ![V_DB_15](https://github.com/user-attachments/assets/b83dd11f-f5e2-4332-8136-f26a4006bc26)
 4. Pilih file **Shapefile (.shp)** yang ingin diimpor.
 5. Pilih **Nama Tabel** yang akan dibuat dalam PostGIS.
 6. Centang **Create Spatial Index** untuk mempercepat query.  
-   ![alt text](image-21.png)
+   ![V_DB_16](https://github.com/user-attachments/assets/d61c346a-3294-4617-994a-b94f5f7c3faf)
 7. Klik **OK** untuk memulai proses import.
 8. Setelah selesai, data bisa dilihat di **Browser Panel → PostGIS Connection**.  
-   ![alt text](image-22.png)
+   ![V_DB_17](https://github.com/user-attachments/assets/bfedd10b-314c-4d46-b813-f5f851ca0728)
 9. Data yang diimpor bisa langsung diedit di QGIS.
 
 ---
@@ -99,7 +98,7 @@ CREATE USER dedon WITH PASSWORD '789';
 Pada contoh SQL diatas dibuat akses kepada 3 user. User dapat dibuat sebanyak sesuai dengan kebutuhan dengan menambahkan baris baru pada SQL.
 User-user yang telah dibuat dapat dilihat di dalam jendela Object Explorer, Pada Database --> Login/Group Roles.
 
-![alt text](image-23.png)
+![V_DB_18](https://github.com/user-attachments/assets/2658fae6-4b5e-48eb-b15b-289415d65728)
 
 2. Berikan Hak Akses untuk user ke Database
 ```sh
@@ -115,18 +114,19 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE sungai TO afit; GRANT USAGE, SELEC
 2. Edit dengan teks editor/Notepad
 3. Tambahkan isian berikut di baris bawah:
 host all all 192.168.1.0/24 md5
-![alt text](image-24.png)
+![V_DB_19](https://github.com/user-attachments/assets/38a8ee70-e622-441a-8d35-f5d4bca9d922)
+
 
 ## Setting Firewall dan Port Database
-Masuk ke dalam menu Control Panel → Windows Defender Firewall → Advanced Settings → Inbound Rules → New Rule Pilih Port → Masukkan 5432 → Izinkan akses.
-![alt text](image-14.png)
-![alt text](image-15.png)
+Masuk ke dalam menu Control Panel → Windows Defender Firewall → Advanced Settings → Inbound Rules → New Rule Pilih Port → Masukkan 5432 → Izinkan akses
+![V_DB_20](https://github.com/user-attachments/assets/924a1376-6f0d-4828-940e-521f58fc7de3)
+![V_DB_21](https://github.com/user-attachments/assets/c5b06252-59df-4b44-b894-3df6d377b0ee)
 ---
 ## Akses Geodatabase (User)
 1. Buka QGIS.
 2. Pilih Layer → Data Source Manager → PostgreSQL.
-![alt text](image-16.png)
-![alt text](image-17.png)
+![V_DB_22](https://github.com/user-attachments/assets/96655ca5-61ba-410b-83fc-21c060101cb3)
+![V_DB_23](https://github.com/user-attachments/assets/4762fc4d-3c03-4987-9829-a427a4782c46)
 3. Klik New dan isi:
 - Name: Isikan bebas (misal: PostGISDB)
 - Host: IP server PostgreSQL
@@ -134,7 +134,7 @@ Masuk ke dalam menu Control Panel → Windows Defender Firewall → Advanced Set
 - Database: Isikan nama database yang telah dibuat sebelumnya (contoh: tes_jabar)
 - Username: sesuai dengan akun akses user (contoh: afit)
 - Password: sesuai dengan password akun user.
-![alt text](image-18.png)
+![V_DB_24](https://github.com/user-attachments/assets/7fc828be-24ef-46b0-a9cb-ee21e242a6fa)
 4. Klik Test Connection untuk memastikan koneksi berhasil.
 5. Klik OK, lalu Connect untuk melihat tabel dalam database.
 6. Jika sudah terkoneksi, maka PostGISDB akan tampil di jendela browser dan data sudah siap diedit oleh user.
