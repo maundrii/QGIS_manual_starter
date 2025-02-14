@@ -47,8 +47,9 @@
 1. Buka **QGIS**.
 2. Pilih **Layer → Data Source Manager → PostgreSQL**.  
    ![V_DB_10](https://github.com/user-attachments/assets/47751f71-759f-4e05-b8aa-dc6584a3a162)
+   <br>
    ![V_DB_11](https://github.com/user-attachments/assets/1f05aad7-8697-4dc1-98cf-54ad7d3223c5)
-3. Klik **New** dan isi:
+4. Klik **New** dan isi:
    - **Name**: (misal: `PostGISDB`)
    - **Host**: `localhost` (atau IP server PostgreSQL)
    - **Port**: `5432`
@@ -56,9 +57,9 @@
    - **Username**: `postgres`
    - **Password**: (password user PostgreSQL)  
    ![V_DB_12](https://github.com/user-attachments/assets/388ede35-c2df-409d-aaf1-55c98b4c6fbd)
-4. Klik **Test Connection** untuk memastikan koneksi berhasil.
-5. Klik **OK**, lalu **Connect** untuk melihat tabel dalam database.
-6. Jika koneksi berhasil, **PostGISDB** akan muncul di jendela browser.  
+5. Klik **Test Connection** untuk memastikan koneksi berhasil.
+6. Klik **OK**, lalu **Connect** untuk melihat tabel dalam database.
+7. Jika koneksi berhasil, **PostGISDB** akan muncul di jendela browser.  
    ![V_DB_13](https://github.com/user-attachments/assets/577e6600-6abd-4e6e-8fb0-f7dae01b88ad)
 
 ---
@@ -120,13 +121,17 @@ host all all 192.168.1.0/24 md5
 ## Setting Firewall dan Port Database
 Masuk ke dalam menu Control Panel → Windows Defender Firewall → Advanced Settings → Inbound Rules → New Rule Pilih Port → Masukkan 5432 → Izinkan akses
 ![V_DB_20](https://github.com/user-attachments/assets/924a1376-6f0d-4828-940e-521f58fc7de3)
+<br>
 ![V_DB_21](https://github.com/user-attachments/assets/c5b06252-59df-4b44-b894-3df6d377b0ee)
 ---
 ## Akses Geodatabase (User)
 1. Buka QGIS.
 2. Pilih Layer → Data Source Manager → PostgreSQL.
+
 ![V_DB_22](https://github.com/user-attachments/assets/96655ca5-61ba-410b-83fc-21c060101cb3)
+
 ![V_DB_23](https://github.com/user-attachments/assets/4762fc4d-3c03-4987-9829-a427a4782c46)
+
 3. Klik New dan isi:
 - Name: Isikan bebas (misal: PostGISDB)
 - Host: IP server PostgreSQL
@@ -134,7 +139,9 @@ Masuk ke dalam menu Control Panel → Windows Defender Firewall → Advanced Set
 - Database: Isikan nama database yang telah dibuat sebelumnya (contoh: tes_jabar)
 - Username: sesuai dengan akun akses user (contoh: afit)
 - Password: sesuai dengan password akun user.
+
 ![V_DB_24](https://github.com/user-attachments/assets/7fc828be-24ef-46b0-a9cb-ee21e242a6fa)
+
 4. Klik Test Connection untuk memastikan koneksi berhasil.
 5. Klik OK, lalu Connect untuk melihat tabel dalam database.
 6. Jika sudah terkoneksi, maka PostGISDB akan tampil di jendela browser dan data sudah siap diedit oleh user.
