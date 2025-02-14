@@ -87,3 +87,51 @@ Untuk melacak siapa yang mengedit data dan kapan, jalankan SQL berikut pada **Qu
 ALTER TABLE sungai ADD COLUMN created_by TEXT DEFAULT CURRENT_USER;
 ALTER TABLE sungai ADD COLUMN updated_by TEXT;
 ALTER TABLE sungai ADD COLUMN updated_at TIMESTAMP DEFAULT now();
+```sql
+
+### Pengaturan Hak Akses ke User Lain
+PostgreSQL menggunakan sistem perizinan yang bisa dikonfigurasi untuk multiuser editing.
+1. Buat User Baru untuk Editor, isikan SQL:
+>CREATE USER afit WITH PASSWORD '123'; 
+>CREATE USER munir WITH PASSWORD '456';
+>CREATE USER dedon WITH PASSWORD '789';
+
+Pada contoh SQL diatas dibuat akses kepada 3 user. User dapat dibuat sebanyak sesuai dengan kebutuhan dengan menambahkan baris baru pada SQL.
+User-user yang telah dibuat dapat dilihat di dalam jendela Object Explorer, Pada Database --> Login/Group Roles.
+
+![alt text](image-23.png)
+
+2. Berikan Hak Akses untuk user ke Database
+GRANT CONNECT ON DATABASE tes_jabar TO afit;
+3. Beri Hak Akses untuk user ke Tabel dan Data
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE sungai TO afit; GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO afit;
+
+### Setting IP yang akan diberikan hak akses ke database
+1. Buka file pg_hba.conf yang berlokasi di C:\Programfiles\PostgreSQL\14\data\pg_hba.conf
+2. Edit dengan teks editor/Notepad
+3. Tambahkan isian berikut di baris bawah:
+host all all 192.168.1.0/24 md5
+![alt text](image-24.png)
+
+## Setting Firewall dan Port Database
+Masuk ke dalam menu Control Panel → Windows Defender Firewall → Advanced Settings → Inbound Rules → New Rule Pilih Port → Masukkan 5432 → Izinkan akses.
+![alt text](image-14.png)
+![alt text](image-15.png)
+---
+## Akses Geodatabase (User)
+1. Buka QGIS.
+2. Pilih Layer → Data Source Manager → PostgreSQL.
+![alt text](image-16.png)
+![alt text](image-17.png)
+3. Klik New dan isi:
+- Name: Isikan bebas (misal: PostGISDB)
+- Host: IP server PostgreSQL
+- Port: 5432
+- Database: Isikan nama database yang telah dibuat sebelumnya (contoh: tes_jabar)
+- Username: sesuai dengan akun akses user (contoh: afit)
+- Password: sesuai dengan password akun user.
+![alt text](image-18.png)
+4. Klik Test Connection untuk memastikan koneksi berhasil.
+5. Klik OK, lalu Connect untuk melihat tabel dalam database.
+6. Jika sudah terkoneksi, maka PostGISDB akan tampil di jendela browser dan data sudah siap diedit oleh user.
+
