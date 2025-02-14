@@ -82,7 +82,7 @@
 
 ### Menambahkan Kolom untuk Tracking Perubahan Data
 Untuk melacak siapa yang mengedit data dan kapan, jalankan SQL berikut pada **Query Tool** di pgAdmin:
-```sql
+```sh
 ALTER TABLE sungai ADD COLUMN created_by TEXT DEFAULT CURRENT_USER;
 ALTER TABLE sungai ADD COLUMN updated_by TEXT;
 ALTER TABLE sungai ADD COLUMN updated_at TIMESTAMP DEFAULT now();
@@ -90,10 +90,11 @@ ALTER TABLE sungai ADD COLUMN updated_at TIMESTAMP DEFAULT now();
 ### Pengaturan Hak Akses ke User Lain
 PostgreSQL menggunakan sistem perizinan yang bisa dikonfigurasi untuk multiuser editing.
 1. Buat User Baru untuk Editor, isikan SQL:
->CREATE USER afit WITH PASSWORD '123'; 
->CREATE USER munir WITH PASSWORD '456';
->CREATE USER dedon WITH PASSWORD '789';
-
+```sh
+CREATE USER afit WITH PASSWORD '123'; 
+CREATE USER munir WITH PASSWORD '456';
+CREATE USER dedon WITH PASSWORD '789';
+```
 Pada contoh SQL diatas dibuat akses kepada 3 user. User dapat dibuat sebanyak sesuai dengan kebutuhan dengan menambahkan baris baru pada SQL.
 User-user yang telah dibuat dapat dilihat di dalam jendela Object Explorer, Pada Database --> Login/Group Roles.
 
@@ -102,7 +103,7 @@ User-user yang telah dibuat dapat dilihat di dalam jendela Object Explorer, Pada
 2. Berikan Hak Akses untuk user ke Database
 GRANT CONNECT ON DATABASE tes_jabar TO afit;
 3. Beri Hak Akses untuk user ke Tabel dan Data
-GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE sungai TO afit; GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO afit;
+```shGRANT SELECT, INSERT, UPDATE, DELETE ON TABLE sungai TO afit; GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO afit;```
 
 ### Setting IP yang akan diberikan hak akses ke database
 1. Buka file pg_hba.conf yang berlokasi di C:\Programfiles\PostgreSQL\14\data\pg_hba.conf
