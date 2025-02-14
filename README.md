@@ -101,9 +101,13 @@ User-user yang telah dibuat dapat dilihat di dalam jendela Object Explorer, Pada
 ![alt text](image-23.png)
 
 2. Berikan Hak Akses untuk user ke Database
+```sh
 GRANT CONNECT ON DATABASE tes_jabar TO afit;
-3. Beri Hak Akses untuk user ke Tabel dan Data
-```shGRANT SELECT, INSERT, UPDATE, DELETE ON TABLE sungai TO afit; GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO afit;```
+```
+4. Beri Hak Akses untuk user ke Tabel dan Data
+```sh
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE sungai TO afit; GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO afit;
+```
 
 ### Setting IP yang akan diberikan hak akses ke database
 1. Buka file pg_hba.conf yang berlokasi di C:\Programfiles\PostgreSQL\14\data\pg_hba.conf
