@@ -82,13 +82,11 @@
 
 ### Menambahkan Kolom untuk Tracking Perubahan Data
 Untuk melacak siapa yang mengedit data dan kapan, jalankan SQL berikut pada **Query Tool** di pgAdmin:
-
 ```sql
 ALTER TABLE sungai ADD COLUMN created_by TEXT DEFAULT CURRENT_USER;
 ALTER TABLE sungai ADD COLUMN updated_by TEXT;
 ALTER TABLE sungai ADD COLUMN updated_at TIMESTAMP DEFAULT now();
-```sql
-
+```
 ### Pengaturan Hak Akses ke User Lain
 PostgreSQL menggunakan sistem perizinan yang bisa dikonfigurasi untuk multiuser editing.
 1. Buat User Baru untuk Editor, isikan SQL:
