@@ -2,7 +2,7 @@
 
 ## Install PostgreSQL dan PostGIS
 1. Download PostgreSQL dari [situs resminya](https://www.postgresql.org/download/).
-2. Jalankan Stack Builder setelah instalasi PostgreSQL selesai.  
+2. Jalankan **Stack Builder** setelah instalasi PostgreSQL selesai.  
    ![alt text](image-2.png)
 3. Pilih PostgreSQL versi yang diinstal.  
    ![alt text](image-1.png)
@@ -33,8 +33,8 @@
      CREATE EXTENSION postgis;
      ```
      ![alt text](image-8.png)
-   - Klik **Execute/Refresh** (ikon lingkaran merah pada gambar di atas) untuk menjalankan perintah.
-   - Jika berhasil, akan muncul pesan **"successfully"** pada bagian bawah jendela query, menandakan ekstensi **PostGIS** telah aktif.
+   - Klik **Execute/Refresh** untuk menjalankan perintah.
+   - Jika berhasil, akan muncul pesan **"successfully"**, menandakan ekstensi **PostGIS** telah aktif.
    - Untuk memastikan PostGIS telah aktif:
      - Buka **Object Explorer** pada pgAdmin.
      - Pilih **Database (tes_jabar) → Extensions**.
@@ -49,7 +49,7 @@
    ![alt text](image-10.png)  
    ![alt text](image-11.png)
 3. Klik **New** dan isi:
-   - **Name**: (contoh: `PostGISDB`)
+   - **Name**: (misal: `PostGISDB`)
    - **Host**: `localhost` (atau IP server PostgreSQL)
    - **Port**: `5432`
    - **Database**: nama database yang telah dibuat sebelumnya (contoh: `tes_jabar`)
@@ -63,4 +63,27 @@
 
 ---
 
-## Setting Firewall dan Port Database
+### Import Data Shapefile ke Dalam Database PostGIS di QGIS
+1. Pilih **Database → DB Manager**.  
+   ![alt text](image-19.png)
+2. Pilih **PostGIS** → Pilih koneksi database yang sudah dibuat.
+3. Klik **Import Layer/File** (ikon berbentuk panah ke database).  
+   ![alt text](image-20.png)
+4. Pilih file **Shapefile (.shp)** yang ingin diimpor.
+5. Pilih **Nama Tabel** yang akan dibuat dalam PostGIS.
+6. Centang **Create Spatial Index** untuk mempercepat query.  
+   ![alt text](image-21.png)
+7. Klik **OK** untuk memulai proses import.
+8. Setelah selesai, data bisa dilihat di **Browser Panel → PostGIS Connection**.  
+   ![alt text](image-22.png)
+9. Data yang diimpor bisa langsung diedit di QGIS.
+
+---
+
+### Menambahkan Kolom untuk Tracking Perubahan Data
+Untuk melacak siapa yang mengedit data dan kapan, jalankan SQL berikut pada **Query Tool** di pgAdmin:
+
+```sql
+ALTER TABLE sungai ADD COLUMN created_by TEXT DEFAULT CURRENT_USER;
+ALTER TABLE sungai ADD COLUMN updated_by TEXT;
+ALTER TABLE sungai ADD COLUMN updated_at TIMESTAMP DEFAULT now();
